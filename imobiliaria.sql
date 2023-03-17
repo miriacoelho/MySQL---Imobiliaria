@@ -160,3 +160,15 @@ constraint fk_imovel1 foreign key(codigo_imovel) references imovel(codigo_imovel
 insert into locacao values(1,1111,300,1800,'2016-05-01'),(2,1111,200,500,'2016-05-09'),(3,1212,400,2500,'2016-04-22'),
 (4,1111,100,2000,'2016-03-10'),(5,1414,600,3500,'2016-03-12'),(6,1515,500,3000,'2016-06-13'),(7,1616,600,3800,'2016-05-02'),
 (8,1717,700,2300,'2016-05-28'),(9,1818,800,3250,'2016-03-21'),(10,1919,900,2680,'2016-04-23');
+
+CREATE TABLE venda (
+  codigo_venda decimal(5,0) NOT NULL,
+  codigo_cliente decimal(4,0) DEFAULT NULL,
+  codigo_imovel decimal(3,0) DEFAULT NULL,
+  valor double(10,2) DEFAULT NULL,
+  PRIMARY KEY (codigo_venda),
+  CONSTRAINT fk_venda_cliente FOREIGN KEY (codigo_cliente) REFERENCES cliente (codigo_cliente) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_venda_imovel FOREIGN KEY (codigo_imovel) REFERENCES imovel (codigo_imovel) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+INSERT INTO venda VALUES (1,2020,111,500000.00),(2,2121,222,620000.00),(3,2222,333,750000.00),(4,1313,444,180000.00),(5,1414,555,80000.00),(6,1515,666,580000.00),(7,1616,777,850000.00),(8,1717,888,76000.00);
